@@ -35,13 +35,14 @@ namespace ssevillaSemana5
 
                 var mensaje = "Dato ingresado con exito";
                 DependencyService.Get<Mensaje>().longAlert(mensaje);
+
                 Navigation.PushAsync(new MainPage());
             } 
             
             
             catch (Exception ex) 
             {
-                DisplayAlert("Alerta", ex.Message, "Cerrar");
+                DependencyService.Get<Mensaje>().longAlert(ex.Message);
             }
         }
     }

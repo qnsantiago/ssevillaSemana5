@@ -36,11 +36,13 @@ namespace ssevillaSemana5
                 datos.Add("edad", txtEdad.Text);
 
                 cliente.UploadValues(URL+"?codigo=" + txtCodigo.Text + "&nombre=" + txtNombre.Text + "&apellido=" + txtApellido.Text + "&edad=" + txtEdad.Text, "PUT", datos);
+                var mensaje = "Dato actualizado con exito";
+                DependencyService.Get<Mensaje>().longAlert(mensaje);
                 Navigation.PushAsync(new MainPage());
             }
             catch (Exception ex)
             {
-                DisplayAlert("ALERTA", ex.Message, "Cerrar");
+                DependencyService.Get<Mensaje>().longAlert(ex.Message);
 
             }
 
@@ -57,11 +59,13 @@ namespace ssevillaSemana5
 
                 datos.Add("codigo", txtCodigo.Text);
                 cliente.UploadValues(URL + "?codigo=" + txtCodigo.Text, "DELETE", datos);
+                var mensaje = "Dato eliminado con exito";
+                DependencyService.Get<Mensaje>().longAlert(mensaje);
                 Navigation.PushAsync(new MainPage());
             }
             catch (Exception ex)
             {
-                DisplayAlert("ALERTA", ex.Message, "Cerrar");
+                DependencyService.Get<Mensaje>().longAlert(ex.Message);
 
             }
 
